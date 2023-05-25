@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "algorithms/ar_algorithm_enums.h"
-#include "algorithms/cfd/enums.h"
 #include "algorithms/create_algorithm.h"
 #include "algorithms/metric/enums.h"
 #include "util/config/names_and_descriptions.h"
@@ -116,16 +115,6 @@ boost::program_options::options_description AlgoOptions() {
 
     mfd_options.add(cosine_options);
 
-    po::options_description cfd_search_options("CFD mining options");
-    cfd_search_options.add_options()
-            (names::kCfdMinimumSupport, po::value<unsigned>(), desc::kDCfdMinimumSupport)
-            (names::kCfdMinimumConfidence, po::value<double>(), desc::kDCfdMinimumConfidence)
-            (names::kCfdMaximumLhs, po::value<unsigned>(), desc::kDCfdMaximumLhs)
-            (names::kCfdColumnsNumber, po::value<unsigned>(), desc::kDCfdColumnsNumber)
-            (names::kCfdTuplesNumber, po::value<unsigned>(), desc::kDCfdTuplesNumber)
-            (names::kCfdSubstrategy, po::value<algos::cfd::Substrategy>(), desc::kDCfdSubstrategy)
-            ;
-
     po::options_description ac_options("AC options");
     ac_options.add_options()
             (names::kBinaryOperation, po::value<char>()->default_value('+'),
@@ -154,8 +143,7 @@ boost::program_options::options_description AlgoOptions() {
             .add(ar_options)
             .add(ac_options)
             .add(typo_options)
-            .add(fd_verification_options)
-            .add(cfd_search_options);
+            .add(fd_verification_options);
     return algorithm_options;
 }
 }  // namespace util::config

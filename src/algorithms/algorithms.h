@@ -26,4 +26,4 @@
 #include "algorithms/ucc/hyucc/hyucc.h"
 
 /* CFD mining algorithms */
-#include "algorithms/cfd/fd_first_algorithm.h"
+#include "algorithms/cfd/cfddiscovery_or.h"

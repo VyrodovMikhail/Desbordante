@@ -3,8 +3,8 @@
 #include <iterator>
 #include <thread>
 
-#include "algorithms/cfd/util/cfd_output_util.h"
-#include "algorithms/cfd/util/set_util.h"
+// #include "algorithms/cfd/util/cfd_output_util.h"
+// #include "algorithms/cfd/util/set_util.h"
 #include "util/config/equal_nulls/option.h"
 #include "util/config/names_and_descriptions.h"
 
@@ -23,16 +23,16 @@ CFDDiscovery::CFDDiscovery(std::vector<std::string_view> phase_names)
 CFDDiscovery::CFDDiscovery() : CFDDiscovery({kDefaultPhaseName}) {}
 
 void CFDDiscovery::LoadDataInternal(model::IDatasetStream& data_stream) {
-    relation_ = CFDRelationData::CreateFrom(data_stream, is_null_equal_null_, columns_number_,
-                                            tuples_number_);
+    //relation_ = CFDRelationData::CreateFrom(data_stream, is_null_equal_null_, columns_number_,
+    //                                        tuples_number_);
 
-    if (relation_->GetColumnData().empty()) {
-        throw std::runtime_error("Got an empty .csv file: CFD mining is meaningless.");
-    }
+    //if (relation_->GetColumnData().empty()) {
+    //    throw std::runtime_error("Got an empty .csv file: CFD mining is meaningless.");
+    //}
 }
 
 void CFDDiscovery::ResetState() {
-    cfd_list_.clear();
+    //cfd_list_.clear();
     ResetStateCFD();
 }
 
@@ -41,12 +41,12 @@ void CFDDiscovery::RegisterOptions() {
     using namespace util::config::descriptions;
     using util::config::Option;
 
-    RegisterOption(Option{&columns_number_, kCfdColumnsNumber, kDCfdColumnsNumber, 0u});
-    RegisterOption(Option{&tuples_number_, kCfdTuplesNumber, kDCfdTuplesNumber, 0u});
-    RegisterOption(util::config::EqualNullsOpt(&is_null_equal_null_));
+    //RegisterOption(Option{&columns_number_, kCfdColumnsNumber, kDCfdColumnsNumber, 0u});
+    //RegisterOption(Option{&tuples_number_, kCfdTuplesNumber, kDCfdTuplesNumber, 0u});
+    //RegisterOption(util::config::EqualNullsOpt(&is_null_equal_null_));
 }
 
-int CFDDiscovery::NrCfds() const {
+/* int CFDDiscovery::NrCfds() const {
     return (int)cfd_list_.size();
 }
 
@@ -64,5 +64,5 @@ std::string CFDDiscovery::GetRelationString(char delim) const {
 
 std::string CFDDiscovery::GetRelationString(const SimpleTIdList& subset, char delim) const {
     return relation_->GetStringFormat(subset, delim);
-}
+} */
 }  // namespace algos::cfd

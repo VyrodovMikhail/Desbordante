@@ -9,8 +9,8 @@
 #include <boost/any.hpp>
 
 #include "algorithms/algorithm.h"
-#include "algorithms/cfd/structures/cfd_relation_data.h"
-#include "algorithms/cfd/structures/cfd_types.h"
+//#include "algorithms/cfd/structures/cfd_relation_data.h"
+//#include "algorithms/cfd/structures/cfd_types.h"
 
 // see algorithms/cfd/LICENSE
 
@@ -26,8 +26,8 @@ private:
 protected:
     unsigned columns_number_;
     unsigned tuples_number_;
-    CFDList cfd_list_;
-    std::shared_ptr<CFDRelationData> relation_;
+    //CFDList cfd_list_;
+    //std::shared_ptr<CFDRelationData> relation_;
 
 public:
     constexpr static std::string_view kDefaultPhaseName = "CFD mining";
@@ -35,9 +35,9 @@ public:
     explicit CFDDiscovery();
     void LoadDataInternal(model::IDatasetStream& data_stream) final;
     int NrCfds() const;
-    CFDList GetCfds() const;
+    //CFDList GetCfds() const;
     std::string GetRelationString(char delim = ' ') const;
-    std::string GetRelationString(const SimpleTIdList& subset, char delim = ' ') const;
-    std::string GetCfdString(CFD const& cfd) const;
+    //std::string GetRelationString(const SimpleTIdList& subset, char delim = ' ') const;
+    //std::string GetCfdString(CFD const& cfd) const;
 };
 }  // namespace algos::cfd
